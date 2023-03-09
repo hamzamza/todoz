@@ -20,18 +20,23 @@ const register = async (req, res, next) => {
 
 
 const login = async (req, res, next) => {
+   try {
     const user = await User.findOne({ username: req.body.username }
-    )
-    if (user) {
-        const isPasswordcorrect = user._doc.password == req.body.password
-        if (isPasswordcorrect) {
-            console.log("logged in ");
-            const token = generatewebtoken(user._doc._id, req.body.username);
-            res.status(200).json(token)
+        )
+        if (user) {
+            const isPasswordcorrect = user._doc.password === req.body.password
+            if (isPasswordcorrect) {
+                console.log("logged in ");
+                const token = generatewebtoken(user._doc._id, req.body.username);
+                console.log(token);
+                res.status(200).json({token : token})
+            }
+            else res.status(500).json({ msg: "username or password incorrect " })
         }
         else res.status(500).json({ msg: "username or password incorrect " })
-    }
-    else res.status(500).json({ msg: "username or password incorrect " })
+   } catch (error) {
+    console.log("error : "+ error);
+   }
 }
 
 
