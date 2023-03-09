@@ -55,12 +55,13 @@ const generatewebtoken = (userId, username) => {
 
 const verifyToken = async (token) => {
     let decodedToken;
-    try {tokengetted
-        const secret = process.env.SECRET;
-        decodedToken = jwt.verify(token, secret);
-        console.log(decodedToken);
-        const userId = decodedToken.userId;
-        const userflan = await User.findById(userId);
+    try { 
+            tokengetted
+            const secret = process.env.SECRET;
+            decodedToken = jwt.verify(token, secret);
+            console.log(decodedToken);
+            const userId = decodedToken.userId;
+            const userflan = await User.findById(userId); 
         if (userflan) {
             if (userflan._doc.username == decodedToken.username) {
                 return true;

@@ -28,10 +28,8 @@ const UserSchema = new mongoose.Schema(
         , 
         tasks : {
            type :  [TaskSchema] , 
-            
-            
-        }
     }
+}
 
 )
 
