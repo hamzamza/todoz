@@ -7,13 +7,13 @@ const register = async (req, res, next) => {
             password: req.body.password,
             email: req.body.email
         })
-
         res.status(203).json()
     } catch (error) {
         console.log(error);
         res.status(500).json({ msg: "bad request " })
     }
 }
+
 
 
 
@@ -43,9 +43,7 @@ const generatewebtoken = (userId, username) => {
         username: username
     };
     const secret = process.env.SECRET;
-    const options = { expiresIn: '300d' }
-
-
+    const options = { expiresIn: '30d' }
     return jwt.sign(payload, secret, options);
 }
 
