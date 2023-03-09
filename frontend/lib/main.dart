@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 import 'api/storage.dart';
-import 'screens/home/Homescreen.dart';
+
 import 'screens/welcome/welcome_screen.dart';
 
 void main() async {
